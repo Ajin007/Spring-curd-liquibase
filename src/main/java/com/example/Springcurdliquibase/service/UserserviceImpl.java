@@ -3,6 +3,7 @@ package com.example.Springcurdliquibase.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.Springcurdliquibase.repository.Repository;
@@ -55,9 +56,10 @@ private	Repository repository;
 
 	@Override
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
 		
-		return repository.findAll();
+		// we shall use pagingandsorting repository since it is extended by the jpa-repository
+		//so using sort method we were able to achieve this
+		return repository.findAll(Sort.by(Sort.Direction.ASC));
 		
 	}
 
